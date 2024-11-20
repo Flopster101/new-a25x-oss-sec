@@ -493,6 +493,13 @@ config OPEN_DICE
 
 	  If unsure, say N.
 
+config SEC_DETECT
+	tristate "Detect currently running Samsung device"
+	default m
+	help
+		Helps detect what device is currently running the kernel.
+		The following are supported: Galaxy A33, Galaxy A25.
+
 source "drivers/misc/c2port/Kconfig"
 source "drivers/misc/eeprom/Kconfig"
 source "drivers/misc/cb710/Kconfig"
