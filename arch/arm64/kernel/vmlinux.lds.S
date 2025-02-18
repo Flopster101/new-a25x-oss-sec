@@ -277,6 +277,10 @@ SECTIONS
 
 	HYPERVISOR_DATA_SECTION
 
+	.test_modules : {
+		KUNIT_TEST_MODULES
+	}
+
 	/*
 	 * Data written with the MMU off but read with the MMU on requires
 	 * cache lines to be invalidated, discarding up to a Cache Writeback
