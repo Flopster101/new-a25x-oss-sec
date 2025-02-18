@@ -4356,6 +4356,9 @@ static const u8 skb_ext_type_len[] = {
 #if IS_ENABLED(CONFIG_MPTCP)
 	[SKB_EXT_MPTCP] = SKB_EXT_CHUNKSIZEOF(struct mptcp_ext),
 #endif
+#if IS_ENABLED(CONFIG_SKB_TRACER)
+	[SKB_TRACER] = SKB_EXT_CHUNKSIZEOF(struct skb_tracer),
+#endif
 };
 
 static __always_inline unsigned int skb_ext_total_length(void)
@@ -4372,6 +4375,9 @@ static __always_inline unsigned int skb_ext_total_length(void)
 #endif
 #if IS_ENABLED(CONFIG_MPTCP)
 		skb_ext_type_len[SKB_EXT_MPTCP] +
+#endif
+#if IS_ENABLED(CONFIG_SKB_TRACER)
+		skb_ext_type_len[SKB_TRACER] +
 #endif
 		0;
 }
