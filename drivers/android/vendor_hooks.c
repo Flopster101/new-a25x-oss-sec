@@ -99,6 +99,7 @@
 #include <trace/hooks/pci.h>
 #include <trace/hooks/suspend.h>
 #include <trace/hooks/dmabuf.h>
+#include <trace/hooks/mz.h>
 
 /*
  * Export tracepoints that act as a bare tracehook (ie: have no trace event
@@ -373,6 +374,8 @@ EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_v4l2subdev_set_selection);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_v4l2subdev_set_fmt);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_v4l2subdev_set_frame_interval);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_scmi_timeout_sync);
+EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_ptype_head);
+EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_kfree_skb);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_rvh_find_new_ilb);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_alloc_uid);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_free_user);
@@ -391,8 +394,6 @@ EXPORT_TRACEPOINT_SYMBOL_GPL(android_rvh_force_compatible_post);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_binder_print_transaction_info);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_setscheduler_uclamp);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_rproc_recovery);
-EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_ptype_head);
-EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_kfree_skb);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_check_mmap_file);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_check_file_open);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_check_bpf_syscall);
@@ -433,3 +434,4 @@ EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_alloc_pages_failure_bypass);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_rebuild_root_domains_bypass);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_ptep_clear_flush_young);
 EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_do_swap_page_spf);
+EXPORT_TRACEPOINT_SYMBOL_GPL(android_vh_mz_exit);
