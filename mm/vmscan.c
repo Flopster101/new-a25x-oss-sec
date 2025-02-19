@@ -1758,7 +1758,7 @@ static __always_inline void update_lru_sizes(struct lruvec *lruvec,
  * for current allocation context. Kswapd can not be enrolled as it can not
  * distinguish this scenario by using sc->gfp_mask = GFP_KERNEL
  */
-static bool skip_cma(struct page *page, struct scan_control *sc)
+static bool __maybe_unused skip_cma(struct page *page, struct scan_control *sc)
 {
 	return !current_is_kswapd() &&
 			gfp_migratetype(sc->gfp_mask) != MIGRATE_MOVABLE &&
