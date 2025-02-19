@@ -940,7 +940,7 @@ static int __f2fs_get_cluster_blocks(struct inode *inode,
 }
 
 static int __f2fs_cluster_blocks(struct inode *inode,
-				unsigned int cluster_idx, bool compr)
+				unsigned int cluster_idx, bool compr, enum cluster_check_type type)
 {
 	struct dnode_of_data dn;
 	unsigned int start_idx = cluster_idx <<
@@ -976,7 +976,7 @@ fail:
 /* return # of compressed blocks in compressed cluster */
 static int f2fs_compressed_blocks(struct compress_ctx *cc)
 {
-	return __f2fs_cluster_blocks(cc->inode, cc->cluster_idx,
+	return __f2fs_cluster_blocks(cc->inode, cc->cluster_idx, true,
 		CLUSTER_COMPR_BLKS);
 }
 
@@ -984,7 +984,7 @@ static int f2fs_compressed_blocks(struct compress_ctx *cc)
 static int f2fs_decompressed_blocks(struct inode *inode,
 				unsigned int cluster_idx)
 {
-	return __f2fs_cluster_blocks(inode, cluster_idx,
+	return __f2fs_cluster_blocks(inode, cluster_idx, true,
 		CLUSTER_RAW_BLKS);
 }
 
@@ -992,7 +992,7 @@ static int f2fs_decompressed_blocks(struct inode *inode,
 int f2fs_is_compressed_cluster(struct inode *inode, pgoff_t index)
 {
 	return __f2fs_cluster_blocks(inode,
-		index >> F2FS_I(inode)->i_log_cluster_size,
+		index >> F2FS_I(inode)->i_log_cluster_size, false,
 		CLUSTER_IS_COMPR);
 }
 
