@@ -889,9 +889,10 @@ int f2fs_get_dnode_of_data(struct dnode_of_data *dn, pgoff_t index, int mode)
 			blkaddr = data_blkaddr(dn2.inode, dn2.node_page,
 						dn2.ofs_in_node + 1);
 
-		f2fs_update_read_extent_tree_range_compressed(dn->inode,
-					round_down(index, cluster_size),
-					blkaddr, cluster_size, c_len);
+		f2fs_update_extent_tree_range_compressed(dn->inode,
+			index, blkaddr,
+			F2FS_I(dn->inode)->i_cluster_size,
+			c_len);
 	}
 out:
 	__lock_dnode(dn, false);
