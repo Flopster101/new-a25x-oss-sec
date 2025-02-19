@@ -128,15 +128,16 @@ struct dma_buf *dma_heap_buffer_alloc(struct dma_heap *heap, size_t len,
 				      unsigned int heap_flags)
 {
 	bool vh_valid = false;
-
-	trace_android_vh_dmabuf_heap_flags_validation(heap,
-		len, fd_flags, heap_flags, &vh_valid);
 	struct dma_buf *dma_buf;
+
 	unsigned long jiffies_s = jiffies;
 	u64 utime, stime_s, stime_e, stime_d;
 	static DEFINE_RATELIMIT_STATE(show_mem_ratelimit, HZ * 10, 1);
 	unsigned long vm_events_before[ARRAY_SIZE(vm_events_item)];
 	unsigned long vm_events_after[ARRAY_SIZE(vm_events_item)];
+
+	trace_android_vh_dmabuf_heap_flags_validation(heap,
+		len, fd_flags, heap_flags, &vh_valid);
 
 	if (fd_flags & ~DMA_HEAP_VALID_FD_FLAGS)
 		return ERR_PTR(-EINVAL);
